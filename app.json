@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    "expo-splash-screen",
+    "expo-status-bar",
+    "expo-audio",
+    "expo-video"
+  ]
+}
