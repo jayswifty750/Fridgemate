@@ -1,7 +1,7 @@
 // App.js
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StatusBar, TouchableOpacity, Alert } from 'react-native';
+import { StatusBar, TouchableOpacity, Alert, View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -17,6 +17,9 @@ import SplashScreen from './screens/SplashScreen';
 import { AuthProvider, useAuth } from './src/contexts/AuthContext';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
+
+// 👇 Import your background video component
+import RadiantBackground from './components/RadiantBackground';
 
 const BRAND = { green: '#0B3D0B', greenLight: '#E9F7EF' };
 
@@ -50,7 +53,7 @@ function MainTabs() {
           headerStyle: { backgroundColor: BRAND.green },
           headerTintColor: '#fff',
           headerTitleStyle: { fontWeight: '600' },
-          headerRight: () => <LogoutButton />,        // 👈 add button to every tab header
+          headerRight: () => <LogoutButton />,
           tabBarStyle: {
             backgroundColor: BRAND.green,
             borderTopColor: BRAND.green,
@@ -111,9 +114,22 @@ function RootNavigator() {
 export default function App() {
   return (
     <AuthProvider>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
+      <View style={styles.container}>
+        {/* 👇 Add video background behind everything */}
+        <RadiantBackground />
+
+        {/* 👇 App content on top of the background */}
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </View>
     </AuthProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
+});

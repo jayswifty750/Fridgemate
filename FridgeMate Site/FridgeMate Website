@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FridgeMate | Scan & Eat Healthy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfdfd;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Decorative Blobs -->
+    <div class="blob bg-green-200 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="blob bg-orange-200 w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="bg-green-500 text-white p-2 rounded-lg">
+                        <i class="ph ph-fridge text-2xl"></i>
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight text-slate-800">FridgeMate</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#how-it-works" class="text-slate-600 hover:text-green-600 font-medium transition">How it Works</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-slate-600 hover:text-slate-900">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#how-it-works" class="block text-slate-600 font-medium">How it Works</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex flex-col items-center text-center">
+                
+                <!-- Hero Content -->
+                <div class="max-w-3xl z-10">
+                    <h1 class="text-5xl lg:text-7xl font-extrabold text-slate-900 leading-tight mb-6">
+                        Stop wasting food. <br>
+                        Start <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-teal-500">cooking</span>.
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Track expiration dates automatically and discover delicious recipes based on what's already in your fridge. Save money and minimize waste.
+                    </p>
+                    
+                    <div class="flex flex-col items-center gap-4 mb-8">
+                        <p class="text-lg font-semibold text-slate-700">Scan here to get started</p>
+                        <div class="bg-white p-3 rounded-xl shadow-lg border border-slate-100 inline-block">
+                            <!-- Updated to use the specific uploaded QR code image -->
+                            <img src="FridgeMate-QR.jpg" alt="QR Code" style="width:250px; height:auto;">
+                        </div>
+                    </div>
+
+                    <div class="mt-10 flex items-center justify-center gap-6 text-slate-500 text-sm font-medium">
+                        <div class="flex items-center gap-2">
+                            <i class="ph ph-check-circle text-green-500 text-xl"></i> 100% Independent
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="ph ph-check-circle text-green-500 text-xl"></i> No Ads
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="bg-slate-50 py-12 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-extrabold text-slate-900">Instant</div>
+                    <div class="text-slate-500 mt-1">Scan Results</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-extrabold text-slate-900">100%</div>
+                    <div class="text-slate-500 mt-1">Independent</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-extrabold text-slate-900">Privacy</div>
+                    <div class="text-slate-500 mt-1">Focused Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how-it-works" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Simple. Fast. Transparent.</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">Scan your groceries to automatically track expiration dates and discover delicious recipes based on what you have.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-600">
+                        <i class="ph ph-scan text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">1. Scan the product</h3>
+                    <p class="text-slate-600">Use the camera to scan the barcode of any food or cosmetic product.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-orange-100 rounded-2xl flex items-center justify-center mb-6 text-orange-600">
+                        <i class="ph ph-calendar-check text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">2. Get your expiration date</h3>
+                    <p class="text-slate-600">Automatically track freshness with estimated expiration dates and get reminders before your food goes bad.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mb-6 text-green-600">
+                        <i class="ph ph-cooking-pot text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">3. Get Recipes</h3>
+                    <p class="text-slate-600">Turn your scanned items into delicious meals with personalized recipe suggestions tailored to what's in your fridge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section id="download" class="py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-green-500 to-teal-500 rounded-3xl p-10 md:p-16 text-center text-white shadow-2xl relative overflow-hidden">
+                <!-- Decorative circles -->
+                <div class="absolute top-0 left-0 w-64 h-64 bg-white opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="absolute bottom-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full translate-x-1/2 translate-y-1/2"></div>
+                
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 relative z-10">Start eating better today.</h2>
+                <p class="text-lg md:text-xl opacity-90 mb-10 max-w-2xl mx-auto relative z-10">Join the food revolution. FridgeMate helps you take control of your health and reduce waste.</p>
+                
+                <div class="flex flex-col items-center gap-4 relative z-10">
+                    <p class="text-lg font-semibold text-white">Scan here to get started</p>
+                    <div class="bg-white p-3 rounded-xl shadow-lg inline-block">
+                        <!-- Updated to use the specific uploaded QR code image -->
+                        <img src="FridgeMate-QR.jpg" alt="QR Code" style="width:250px; height:auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-16 pb-8 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="bg-green-500 text-white p-1.5 rounded-md">
+                            <i class="ph ph-fridge text-xl"></i>
+                        </div>
+                        <span class="font-bold text-xl tracking-tight text-slate-800">FridgeMate</span>
+                    </div>
+                    <p class="text-slate-500 text-sm">Scan. Store. Stay Fresh.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-4">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/fridgemateco/?utm_source=qr" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-green-500 hover:text-white transition">
+                            <i class="ph ph-instagram-logo text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-400">
+                <p>&copy; 2025 FridgeMate Inc. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    Made with <i class="ph ph-heart-fill text-red-400"></i> for healthy living.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Phone Script -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Sticky Navbar Logic
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-sm');
+                navbar.classList.replace('bg-transparent', 'glass');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
