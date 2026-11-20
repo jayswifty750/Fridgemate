@@ -72,3 +72,11 @@ See [INSTALLATION.md](INSTALLATION.md) for instructions on setting up and runnin
 ---
 
 *FridgeMate — Helping people keep track of their groceries and reduce food waste.*
+
+## Documentation
+
+Explore the documentation for more information about FridgeMate:
+
+- [Installation Guide](INSTALLATION.md) – Instructions for setting up and running the application.
+- [Features](FEATURES.md) – Overview of FridgeMate's main features and functionality.
+- [Troubleshooting](TROUBLESHOOTING.md) – Solutions to common setup and development issues.
